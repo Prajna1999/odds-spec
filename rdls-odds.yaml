@@ -1,0 +1,392 @@
+---
+# Open Flood Data Standard
+
+metadata:
+  standard_version: "1.0"
+  uid: "ODDS_2024_001"
+  title: "Flash flood at Kokrajhar district"
+  collected_by:
+    name: "Rahul Sharma"
+    organization: "District Disaster Management Authority"
+    contact: "rahul.sharma@asdma.gov.in"
+  collection_date: "2024-07-01T12:00:00Z"
+  published_date: "2024-07-07T09:00:00Z"
+  published_by:
+    organization: "Assam Disaster Management Authority"
+    uri: "https://asdma.gov.in"
+  license: "Apache 2.0"
+  data_quality:
+    completeness: 0.85
+    accuracy: 0.7
+    reliability_score: 0.75
+  notes: "Some areas were inaccessible due to high water levels."
+  methodology_url: "https://asdma.gov.in/flood-assessment-methodology"
+  version_history:
+    - version: "1.0"
+      date: "2024-07-07T09:00:00Z"
+      changes: "Initial release"
+    - version: "2.0"
+      date: "2024-07-15T14:00:00Z"
+      changes: "Updated with improved standard structure"
+
+hazard:
+  id: "FLOOD_2024_001"
+  peril_type: "Flood"
+  sub_type: "River Flood"
+  secondary_hazards:
+    - type: "Landslide"
+      trigger: "Soil saturation"
+  event:
+    name: "Brahmaputra river flood July 2024"
+    severity: "Severe"
+    start_date: "2024-07-01T00:00:00Z"
+    end_date: "2024-07-10T23:59:59Z"
+  affected_area:
+    admin_units:
+      - level: 1
+        name: "Assam"
+        code: "IN-AS"
+      - level: 2
+        name: "Kokrajhar"
+        code: "IN-AS-KOK"
+    spatial:
+      crs: "EPSG:4326"
+      geometry:
+        type: "Polygon"
+        coordinates:
+          [
+            [
+              [90.2, 26.4],
+              [90.3, 26.4],
+              [90.3, 26.5],
+              [90.2, 26.5],
+              [90.2, 26.4],
+            ],
+          ]
+  intensity:
+    water_depth:
+      max:
+        value: 3.5
+        unit: "meters"
+      mean:
+        value: 2.1
+        unit: "meters"
+    flow_velocity:
+      max:
+        value: 2.5
+        unit: "m/s"
+  duration:
+    value: 240
+    unit: "hours"
+  return_period:
+    value: 50
+    unit: "years"
+
+exposure:
+  pre_event:
+    population:
+      total: 150000
+      density:
+        value: 280
+        unit: "persons/km2"
+    buildings:
+      total: 30000
+      by_type:
+        residential:
+          count: 25000
+          value:
+            amount: 5000000000
+            currency: "INR"
+        commercial:
+          count: 3000
+          value:
+            amount: 1500000000
+            currency: "INR"
+        industrial:
+          count: 500
+          value:
+            amount: 2500000000
+            currency: "INR"
+    critical_infrastructure:
+      hospitals: 5
+      schools: 100
+      power_plants: 2
+    agriculture:
+      crop_area:
+        value: 50000
+        unit: "hectares"
+
+vulnerability:
+  building_vulnerability:
+    residential:
+      function_type: "depth-damage"
+      parameters:
+        alpha: 0.1
+        beta: 1.5
+    commercial:
+      function_type: "depth-damage"
+      parameters:
+        alpha: 0.15
+        beta: 1.3
+  crop_vulnerability:
+    rice:
+      function_type: "depth-damage"
+      parameters:
+        threshold_depth: 0.5
+        damage_ratio: 0.8
+
+impact:
+  human:
+    fatalities:
+      value: 5
+      confidence_interval: [3, 7]
+    injured:
+      value: 20
+      confidence_interval: [15, 25]
+    missing:
+      value: 2
+      confidence_interval: [1, 3]
+    displaced:
+      total:
+        value: 2000
+        confidence_interval: [1800, 2200]
+      in_shelters:
+        value: 1500
+        confidence_interval: [1350, 1650]
+    affected:
+      total:
+        value: 100000
+        confidence_interval: [95000, 105000]
+      children:
+        value: 30000
+        confidence_interval: [28000, 32000]
+      elderly:
+        value: 15000
+        confidence_interval: [14000, 16000]
+      persons_with_disabilities:
+        value: 5000
+        confidence_interval: [4500, 5500]
+
+  buildings:
+    - type: "Pucca"
+      residential:
+        fully_destroyed:
+          count:
+            value: 50
+            confidence_interval: [45, 55]
+          estimated_value:
+            amount: 100000000
+            currency: "INR"
+        partially_damaged:
+          count:
+            value: 500
+            confidence_interval: [450, 550]
+          estimated_value:
+            amount: 250000000
+            currency: "INR"
+        flooded_but_not_damaged:
+          count:
+            value: 5000
+            confidence_interval: [4800, 5200]
+    - type: "Kaccha"
+      residential:
+        fully_destroyed:
+          count:
+            value: 50
+            confidence_interval: [45, 55]
+          estimated_value:
+            amount: 100000000
+            currency: "INR"
+        partially_damaged:
+          count:
+            value: 500
+            confidence_interval: [450, 550]
+          estimated_value:
+            amount: 250000000
+            currency: "INR"
+        flooded_but_not_damaged:
+          count:
+            value: 5000
+            confidence_interval: [4800, 5200]
+
+  infrastructure:
+    transportation:
+      roads:
+        damaged_length:
+          value: 50
+          unit: "km"
+        estimated_repair_cost:
+          amount: 100000000
+          currency: "INR"
+      bridges:
+        damaged_count: 2
+        estimated_repair_cost:
+          amount: 50000000
+          currency: "INR"
+    public_buildings:
+      schools:
+        damaged_count: 5
+        estimated_repair_cost:
+          amount: 25000000
+          currency: "INR"
+      hospitals:
+        damaged_count: 1
+        estimated_repair_cost:
+          amount: 10000000
+          currency: "INR"
+    utilities:
+      power_grid:
+        damaged_facilities_count: 10
+        affected_households: 5000
+        estimated_repair_cost:
+          amount: 30000000
+          currency: "INR"
+      water_supply:
+        damaged_facilities_count: 5
+        affected_households: 3000
+        estimated_repair_cost:
+          amount: 20000000
+          currency: "INR"
+
+  agriculture:
+    crops:
+      affected_area:
+        value: 10000
+        unit: "hectares"
+      estimated_loss:
+        amount: 500000000
+        currency: "INR"
+    livestock:
+      lost_count: 500
+      estimated_value:
+        amount: 10000000
+        currency: "INR"
+
+  economic:
+    direct_losses:
+      total:
+        amount: 1500000000
+        currency: "INR"
+    indirect_losses:
+      business_interruption:
+        affected_businesses_count: 200
+        estimated_loss:
+          amount: 100000000
+          currency: "INR"
+      loss_of_income:
+        affected_individuals: 5000
+        estimated_loss:
+          amount: 50000000
+          currency: "INR"
+      increased_transportation_costs:
+        estimated_amount:
+          amount: 10000000
+          currency: "INR"
+
+  social:
+    education_disruption:
+      schools_closed: 20
+      students_affected: 5000
+      school_days_lost: 10
+    health:
+      description: "Increased cases of water-borne diseases"
+      estimated_cost:
+        amount: 20000000
+        currency: "INR"
+
+  environment:
+    ecosystems_affected:
+      - type: "Wetland"
+        area_affected:
+          value: 5000
+          unit: "hectares"
+        estimated_recovery_time:
+          value: 2
+          unit: "years"
+    water_pollution:
+      affected_water_bodies:
+        - "Brahmaputra River"
+        - "Lohit River"
+      description: "Increased turbidity and contamination from flood waters"
+    soil_erosion:
+      affected_area:
+        value: 2000
+        unit: "hectares"
+      severity: "High"
+
+response:
+  early_warning:
+    warning_issued_date: "2024-06-30T18:00:00Z"
+    lead_time:
+      value: 6
+      unit: "hours"
+    dissemination_coverage: 0.8
+  emergency_response:
+    description: "Immediate rescue and relief operations"
+    resources_deployed:
+      boats: 20
+      helicopters: 2
+      relief_workers: 500
+    estimated_cost:
+      amount: 50000000
+      currency: "INR"
+  evacuation:
+    total_evacuated: 5000
+    evacuation_centers:
+      count: 10
+      total_capacity: 10000
+  temporary_housing:
+    people_housed: 1500
+    estimated_cost:
+      amount: 30000000
+      currency: "INR"
+  relief_distribution:
+    food_packages_distributed: 10000
+    water_supplied:
+      value: 50000
+      unit: "liters"
+  debris_removal:
+    estimated_volume:
+      value: 10000
+      unit: "cubic_meters"
+    estimated_cost:
+      amount: 15000000
+      currency: "INR"
+
+recovery:
+  short_term:
+    infrastructure_restoration:
+      description: "Temporary repairs to roads and bridges"
+      estimated_cost:
+        amount: 100000000
+        currency: "INR"
+      completion_percentage: 60
+  long_term:
+    housing_reconstruction:
+      planned_units: 1000
+      completed_units: 0
+      estimated_cost:
+        amount: 500000000
+        currency: "INR"
+    livelihood_restoration:
+      programs:
+        - name: "Crop Insurance Payout"
+          beneficiaries: 5000
+          estimated_cost:
+            amount: 250000000
+            currency: "INR"
+    build_back_better:
+      flood_resilient_structures:
+        planned: 50
+        completed: 0
+
+data_collection:
+  methodology:
+    - type: "Satellite Imagery Analysis"
+      description: "Used Sentinel-1 SAR imagery for flood extent mapping"
+    - type: "Field Surveys"
+      description: "Conducted damage assessment surveys in accessible areas"
+    - type: "Drone Mapping"
+      description: "Used drones for detailed mapping of severely affected areas"
+  update_frequency: "Daily during emergency phase"
+  limitations: "Some remote areas not physically accessible; relying on remote sensing"
