@@ -44,12 +44,17 @@ hazard:
     end_date: "2024-07-10T23:59:59Z"
   affected_area:
     admin_units:
+      - level: 0
+        name: "India"
+        code: "IN"
       - level: 1
         name: "Assam"
         code: "IN-AS"
       - level: 2
         name: "Kokrajhar"
         code: "IN-AS-KOK"
+      - level: 3
+        name: "Kokrajhar town"
     spatial:
       crs: "EPSG:4326"
       geometry:
